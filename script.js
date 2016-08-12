@@ -22,5 +22,5 @@ $(function(){
   function failFunction(jqXHR, textStatus, errorThrown){
     console.log(errorThrown);
   }
-  })
-})
+});
+});
