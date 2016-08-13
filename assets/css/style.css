@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Lobster);
+@import url(https://fonts.googleapis.com/css?family=Lobster|Sail);
 
 * {
   box-sizing: border-box;
@@ -7,7 +7,7 @@
 body {
   background-image: url("../img/inspire-bg.jpg");
   background-size: cover;
-  font-family: 'Lobster', cursive;
+  font-family: 'Sail', cursive;
 }
 
 body:after {
@@ -22,7 +22,37 @@ body:after {
 
 h1 {
   font-size: 3em;
-  padding-left: 30px;
+  letter-spacing: 0.4em;
+  line-height: 3em;
+  padding-left: 55px;
+}
+
+/* content area */
+.title-container > h3 {
+  font-size: 2.5em;
+  letter-spacing: 0.1em;
+  line-height: 1.5em;
+  margin: 15px auto;
+}
+
+.input-form {
+  margin-bottom: 20px;
+}
+
+.btn {
+  font-size: 1.35em;
+  border-radius: 30px;
+}
+
+#quote-content {
+  font-size: 1.5em;
+  font-family: 'Lobster', cursive;
+}
+
+
+#quote-person {
+    font-size: 1.3em;
+    text-align: right;
 }
 
 /* another loader */

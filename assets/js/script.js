@@ -26,7 +26,7 @@ $(function(){
   function successFunction(data){
     $loader.hide();
     $content.text(data.quote);
-    $author.text(data.author)
+    $author.text(data.author);
   }
 
   function failFunction(jqXHR, textStatus, errorThrown){
