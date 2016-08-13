@@ -55,6 +55,13 @@ h1 {
     text-align: right;
 }
 
+/* wiki */
+.wiki-container {
+  font-size: 1.2em;
+  text-align: center;
+  margin-left: 50px;
+}
+
 /* another loader */
 
 .loader-wrapper{
