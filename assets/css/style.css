@@ -1,0 +1,21 @@
+@import url(https://fonts.googleapis.com/css?family=Lobster);
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-image: url("../img/inspire-bg.jpg");
+  background-size: cover;
+  font-family: 'Lobster', cursive;
+}
+
+body:after {
+    content:"";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    border-left: 2px solid #8AB5D8;
+}
