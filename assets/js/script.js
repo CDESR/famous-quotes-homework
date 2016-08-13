@@ -1,22 +1,32 @@
 $(function(){
-  $button = $('#quote-now');  // this is the button
+  $button = $('#quote-btn');  // this is the button
   $content = $('#quote-content'); // this selects the result <p>
+  $author = $('#quote-person');
+  $loader = $('.loader');
   api_url = "https://andruxnet-random-famous-quotes.p.mashape.com/?cat=famous"; // this is the url for the api
   $button.on('click', function(){
     $.ajax({
-      // put the necessary code here to hit the api
+      method: "POST",
+      url: api_url,
+      headers: {'X-Mashape-Key': 'XVbzZMAWammshmcUgXnY5aZH3mB0p1OkaYEjsndwnwdA0EBE0I',
+                'Accept': 'text/plain'},
+      dataType: 'json',
+      // // show the loader before making the request
+      beforeSend: function() {
+        $loader.show();
+      }
     }).always(alwaysFunction)
       .success(successFunction)
       .fail(failFunction);
 
   function alwaysFunction(){
-    console.log("yay!");
-    // do we need this? if not take it out
+
   }
 
   function successFunction(data){
-    // put the action to show the quote and the person who said the quote in the $result
-    // we can have this do some changes to the styling to (eg make the container for the result appear only when success)
+    $loader.hide();
+    $content.text(data.quote);
+    $author.text(data.author)
   }
 
   function failFunction(jqXHR, textStatus, errorThrown){
