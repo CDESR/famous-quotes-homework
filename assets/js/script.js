@@ -6,9 +6,7 @@ $(function(){
     url: api2_url,
     headers: {'X-Mashape-Key': 'fKNj4SkY1lmshrYv3plHC6jXCNmdp1YPo3XjsnujdpbI1rHohn',
          'Accept': 'text/plain'},
-    dataType: 'text',
-
-
+    dataType: 'text'
 
   }).success(successFunction)
     .fail(failFunction);
@@ -25,7 +23,7 @@ $(function(){
   $content = $('#quote-content'); // this selects the result <p>
   $author = $('#quote-person');
   $loader = $('.loader');
-  $quotedByAuthor = $('.quoted-by')
+  $quotedByAuthor = $('.quoted-by');
   $quotedByImage = $('.quoted-by-image-container');
   $wikiResult = $('.wiki-container');
   api_url = "https://andruxnet-random-famous-quotes.p.mashape.com/?cat=famous"; // this is the url for the api
@@ -69,7 +67,6 @@ $(function(){
       author_name_url += author_arr[author_arr.length-1];
     }
     buildAuthorName();
-    console.log(author_name_url);
     $author.text(authorQuote);
 
     /* ----- When success, request from WIKI API ----- */
@@ -100,14 +97,14 @@ $(function(){
           content = pages[getID].extract;
       console.log(data);
 
-      if (content && content.length > 3 && !content.includes("This is a redirect")) {
-        console.log(content);
+      if (content && content.length > 3 && !content.includes("This is a redirect") && !content.includes('Unknown')) {
         $quotedByAuthor.text(authorQuote);
         $quotedByImage.html('<img src="' + pages[getID].thumbnail.source + '" alt="" />');
         var more_link = 'http://en.wikipedia.org/wiki/' + author_name_url;
         console.log(more_link);
         $wikiResult.html(content + '<a class="readmore" href="' +  more_link + '" target= "_blank">(read more)</a>');
         $wikiResult.css("background-color", "#E2F5FC");
+        $wikiResult.html(content + '<a href="' +  more_link + '" target= "_blank">(read more)</a>');
       }else{
         $wikiResult.html("");
         $wikiResult.css("background-color", "none");
@@ -163,33 +160,3 @@ $(function(){
 
   });
 });
-
-//
-// $(function(){
-//   $gerWeatherButton = $('#gerweather-btn');
-//   $forecastContent = $('#weather-forecast');
-//   api2_url = "https://simple-weather.p.mashape.com/weather?lat=52.5200&lng=13.4050";
-//
-//   $gerWeatherButton.on('click', function(){
-//     $.ajax({
-//       method: "GET",
-//       url: api2_url,
-//       headers: {'X-Mashape-Key': 'fKNj4SkY1lmshrYv3plHC6jXCNmdp1YPo3XjsnujdpbI1rHohn',
-//            'Accept': 'text/plain'},
-//       dataType: 'text',
-//
-//
-//     }).success(successFunction)
-//       .fail(failFunction);
-//
-//     function successFunction(data){
-//       alert(data);
-//       $forecastContent.text(data);
-//     }
-//
-//     function failFunction(jqXHR, textStatus, errorThrown){
-//       console.log(errorThrown);
-//     }
-//
-//   });
-// });
