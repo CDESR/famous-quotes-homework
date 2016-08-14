@@ -6,9 +6,7 @@ $(function(){
     url: api2_url,
     headers: {'X-Mashape-Key': 'fKNj4SkY1lmshrYv3plHC6jXCNmdp1YPo3XjsnujdpbI1rHohn',
          'Accept': 'text/plain'},
-    dataType: 'text',
-
-
+    dataType: 'text'
 
   }).success(successFunction)
     .fail(failFunction);
@@ -25,7 +23,7 @@ $(function(){
   $content = $('#quote-content'); // this selects the result <p>
   $author = $('#quote-person');
   $loader = $('.loader');
-  $quotedByAuthor = $('.quoted-by')
+  $quotedByAuthor = $('.quoted-by');
   $quotedByImage = $('.quoted-by-image-container');
   $wikiResult = $('.wiki-container');
   api_url = "https://andruxnet-random-famous-quotes.p.mashape.com/?cat=famous"; // this is the url for the api
