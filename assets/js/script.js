@@ -3,6 +3,9 @@ $(function(){
   $content = $('#quote-content'); // this selects the result <p>
   $author = $('#quote-person');
   $loader = $('.loader');
+  $quotedByAuthor = $('.quoted-by')
+  $quotedByImage = $('.quoted-by-image-container');
+  $wikiResult = $('.wiki-container');
   api_url = "https://andruxnet-random-famous-quotes.p.mashape.com/?cat=famous"; // this is the url for the api
   $button.on('click', function(){
     $.ajax({
@@ -23,61 +26,76 @@ $(function(){
 
   }
 
+  function failFunction(jqXHR, textStatus, errorThrown){
+    console.log(errorThrown);
+  }
+
   function successFunction(data){
     $loader.hide();
     $content.text(data.quote);
-    var author_name = data.author;
-    $author.text(author_name);
+
+    var authorQuote = data.author;
+    var author_arr = [];
     var author_name_url = "";
 
-
+    // function to change the name into a format that can be used as a URL to the wiki page
     function buildAuthorName() {
-      author_arr = author_name.split(' ');
+      author_arr = authorQuote.split(' ');
       for (var i = 0; i < author_arr.length - 1; i++) {
-        author_name_url += author_arr[i] + '+';
+        author_name_url += author_arr[i] + '%20';
       }
       author_name_url += author_arr[author_arr.length-1];
     }
     buildAuthorName();
-    var wiki_url = "https://en.wikipedia.org//w/api.php?action=query&format=json&prop=extracts&titles=" + author_name_url + "&exintro=1&explaintext=1";
+    console.log(author_name_url);
+    $author.text(authorQuote);
 
+    /* ----- When success, request from WIKI API ----- */
     $.ajax({
-      method: "GET",
-      url: wiki_url,
-      dataType: 'jsonp',
-    }).success(successFunction)
-      .fail(failFunction);
+      method:   "POST",
+      //add ?calback=? to resolve jsonp dataType issue
+      url:      "https://en.wikipedia.org/w/api.php?callback=?",
+      headers:  { 'Api-User-Agent': 'Example/1.0' },
+      dataType: 'json',
 
-    function successFunction(data) {
-      var prop = Object.keys(data.query.pages);
-      console.log(data);
-      console.log(prop);
-      var wiki_extract = data.query.pages[prop[0]]['extract'];
-      console.log(wiki_extract);
-
-      if (wiki_extract.length <= 0) {
-        $.ajax({
-            url: "http://en.wikipedia.org/w/api.php",
-            dataType: "jsonp",
-            data: {
-                'action': "opensearch",
-                'format': "json",
-                'search': author_name
+      data:     {
+                  format:     "json",
+                  action:     "query",
+                  prop:       "extracts|pageimages",
+                                explaintext: true,
+                                exintro: true, //just get the intro section of wiki
+                                exchars: 800, // only 800 characters
+                                piprop: 'thumbnail',
+                                pithumbsize: 300,
+                  titles:     authorQuote
                 }
-        }).success(successFunction);
+    }).success(getWiki)
+      .fail(failWiki);
 
-        function successFunction(data) {
-          console.log(data);
-        }
+    function getWiki(data) {
+      var pages = data.query.pages,
+          getID = Object.keys(pages),
+          content = pages[getID].extract;
+
+      if (content && content.length > 0) {
+        console.log(data);
+        $quotedByAuthor.text(authorQuote);
+        $quotedByImage.html('<img src="' + pages[getID].thumbnail.source + '" alt="" />');
+        var more_link = 'http://en.wikipedia.org/wiki/' + author_name_url;
+        $wikiResult.html(content + '<a href="' +  more_link + '" target= "_blank">(read more)</a>');
+      }else{
+        $wikiResult.html("");
+        $quotedByImage.html('');
       }
 
-
     }
-  }
+
+    function failWiki(req, textStatus, errorThrown) {
+      console.log(errorThrown);
+      $wikiResult.html('No records in Wikipedia');
+    }
+  } // end of quote success function
 
 
-  function failFunction(jqXHR, textStatus, errorThrown){
-    console.log(errorThrown);
-  }
 });
 });
