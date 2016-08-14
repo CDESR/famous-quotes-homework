@@ -77,11 +77,12 @@ $(function(){
           getID = Object.keys(pages),
           content = pages[getID].extract;
 
-      if (content && content.length > 0) {
+      if (content && content.length > 3) {
         console.log(data);
         $quotedByAuthor.text(authorQuote);
         $quotedByImage.html('<img src="' + pages[getID].thumbnail.source + '" alt="" />');
         var more_link = 'http://en.wikipedia.org/wiki/' + author_name_url;
+        console.log(more_link);
         $wikiResult.html(content + '<a href="' +  more_link + '" target= "_blank">(read more)</a>');
       }else{
         $wikiResult.html("");
