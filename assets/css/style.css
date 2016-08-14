@@ -5,7 +5,7 @@
 }
 
 body {
-  background-image: url("../img/bg.jpg");
+  background-image: url("../img/inspire-bg.jpg");
   background-size: cover;
   font-family: 'Lobster', cursive;
   left: 50%;
@@ -24,7 +24,7 @@ body:after {
 
 
 h1 {
-  color: #FCF6E0;
+  color: #3e3927;
   font-size: 2em;
   font-family: 'Playfair Display', serif;
   font-weight: 700;
@@ -46,7 +46,8 @@ h1.creds {
 /* content area */
 
 .quote-wrapper {
-    margin-top: 45px;
+    margin-top: -285px;
+    margin-right: 145px;
 }
 
 .title-container > h3 {
@@ -81,7 +82,8 @@ h1.creds {
 /* wiki */
 
 .wiki-wrapper {
-  margin-top: 40px;
+  margin-top: -285px;
+  margin-left: 10px;
 }
 
 .wiki-container {
@@ -119,8 +121,8 @@ h1.creds {
   vertical-align: top;
   right: 0px;
   text-align: right;
-  color: #F0FFFF;
-  margin-right: 10px;
+  color: #e4edf2;
+  margin-right: 40px;
 }
 
 .weather-wrapper > h3 {
@@ -128,6 +130,8 @@ h1.creds {
 }
 #weather-forecast {
   font-size: 1.1em;
+  color: #e4edf2;
+  font-weight: bold;
 }
 
 
