@@ -14,40 +14,12 @@
 </head>
 
 <body>
-
-  <div class="container text-center">
-    <h1>Team CDESR</h1>
-    <!-- Famous quotes API -->
-    <div class="col-md-6">
-
-      <div class="title-container">
-        <h3>Want a famous quote?</h3>
-      </div>
-
-      <form class="input-form" action="index.html" method="post">
-        <input type="button" id="quote-btn" class="btn btn-primary" value="Be Inspired">
-      </form>
-
-      <div class="result-container">
-        <div class="content">
-          <p id="quote-content"></p>
-        </div>
-        <div class="person">
-          <p id="quote-person"></p>
-        </div>
-      </div>
-
-    </div>
-
-
+  <header>
     <!-- Weather Forecast API -->
-    <div class="col-md-6">
-
+    <div class="weather-wrapper">
+      <h3>Weather Forecast</h3>
       <div class="title-container">
-        <h3>Weather Forecast</h3>
       </div>
-
-
 
       <div class="result-container">
         <div class="forcast">
@@ -56,27 +28,60 @@
       </div>
     </div>
 
+    <h1 class="team">TEAM</h1>
+    <h1 class="creds">CREDS</h1>
+
+
+  </header>
+
+
+  <div class="container text-center">
+    <!-- Famous quotes API -->
+    <div class="col-md-6">
+
+      <div class="quote-wrapper">
+        <div class="title-container">
+          <h3>Want a famous quote?</h3>
+        </div>
+
+        <form class="input-form" action="index.html" method="post">
+          <input type="button" id="quote-btn" class="btn btn-primary" value="Be Inspired">
+        </form>
+
+        <div class="result-container">
+          <div class="content">
+            <p id="quote-content"></p>
+          </div>
+          <div class="person">
+            <p id="quote-person"></p>
+          </div>
+        </div>
+      </div>
+
+    </div>
 
     <!-- Wikipedia API -->
     <div class="col-md-6">
 
-      <div class="title-container">
-        <h3>Quoted by:</h3>
-      </div>
+      <div class="wiki-wrapper">
+        <div class="title-container">
+          <h3>Quoted by:</h3>
+        </div>
 
-      <div class="quoted-by-container">
-        <h3 class="quoted-by"></h3>
-        <div class="quoted-by-image-container">
+        <div class="quoted-by-container">
+          <h3 class="quoted-by"></h3>
+          <div class="quoted-by-image-container">
+
+          </div>
+        </div>
+
+        <div class="wiki-container">
 
         </div>
 
       </div>
-
-      <div class="wiki-container">
-
-      </div>
-
     </div>
+    
   </div>
 
 

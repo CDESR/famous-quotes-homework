@@ -1,13 +1,15 @@
-@import url(https://fonts.googleapis.com/css?family=Lobster|Sail);
+@import url(https://fonts.googleapis.com/css?family=Lobster|Montserrat|Playfair+Display);
 
 * {
   box-sizing: border-box;
 }
 
 body {
-  background-image: url("../img/inspire-bg.jpg");
+  background-image: url("../img/bg.jpg");
   background-size: cover;
-  font-family: 'Sail', cursive;
+  font-family: 'Lobster', cursive;
+  left: 50%;
+  border-left: 2px solid #8AB5D8;
 }
 
 body:after {
@@ -17,22 +19,42 @@ body:after {
     top: 0;
     bottom: 0;
     left: 50%;
-    border-left: 2px solid #8AB5D8;
+    border-left: 2px solid #A9DCF5;
 }
 
+
 h1 {
-  font-size: 3em;
+  color: #FCF6E0;
+  font-size: 2em;
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
   letter-spacing: 0.4em;
-  line-height: 3em;
-  padding-left: 55px;
+  line-height: 1.5em;
+  word-break: break-all;
+  width: 1em;
+}
+
+h1.team {
+  margin-left: 46%;
+  /*position: absolute;*/
+}
+h1.creds {
+  margin-left: 52%;
+  /*position: absolute;*/
 }
 
 /* content area */
+
+.quote-wrapper {
+    margin-top: 45px;
+}
+
 .title-container > h3 {
-  font-size: 2.5em;
+  font-size: 1.8em;
   letter-spacing: 0.1em;
   line-height: 1.5em;
-  margin: 15px auto;
+  margin: 20px auto;
+  color: #313639;
 }
 
 .input-form {
@@ -45,8 +67,8 @@ h1 {
 }
 
 #quote-content {
-  font-size: 1.5em;
-  font-family: 'Lobster', cursive;
+  font-size: 1.3em;
+  font-family: 'Montserrat', sans-serif;;
 }
 
 
@@ -55,24 +77,59 @@ h1 {
     text-align: right;
 }
 
-/* wiki */
-.wiki-container {
-  font-size: 1.2em;
-  text-align: center;
-  margin-left: 50px;
-  display: block;
-  width: 400px;
-  height: 290px;
-  margin-bottom: 50px;
-  margin-top: 30px;
-  padding: 10px;
-  background-color: white;
-  
-#weather-forecast {
-  font-size: 1.5em;
-  font-family: 'Lobster', cursive;
 
+/* wiki */
+
+.wiki-wrapper {
+  margin-top: 40px;
 }
+
+.wiki-container {
+  position: relative;
+  width: 650px;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1em;
+  letter-spacing: 0.1em;
+  text-align: center;
+  margin: 20px auto;
+  padding: 20px;
+  /*background-color: #E2F5FC;*/
+  /*border: 1px solid black;
+  border-radius: 20px;*/
+}
+
+.quoted-by-image-container > img {
+  border-radius: 150px;
+}
+
+.readmore {
+  color: red;
+}
+
+.readmore:hover {
+  text-transform: capitalize;
+  text-decoration: none;
+}
+
+
+/* ---- Weather ---- */
+
+.weather-wrapper {
+  position: fixed;
+  vertical-align: top;
+  right: 0px;
+  text-align: right;
+  color: #F0FFFF;
+  margin-right: 10px;
+}
+
+.weather-wrapper > h3 {
+  font-size: 1.5em;
+}
+#weather-forecast {
+  font-size: 1.1em;
+}
+
 
 /* another loader */
 
@@ -158,13 +215,6 @@ h1 {
   100% {
     background-color: rgba(0, 0, 0, 0);
   }
-}
-
-.wiki-container{
-  display: block;
-  width: 400px;
-  height: 400px;
-  background-color: white;
 }
 
 /* Styling the svg loader
