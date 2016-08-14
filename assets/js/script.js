@@ -86,7 +86,7 @@ $(function(){
                   prop:       "extracts|pageimages",
                                 explaintext: true,
                                 exintro: true, //just get the intro section of wiki
-                                exchars: 800, // only 800 characters
+                                exchars: 450, // only 800 characters
                                 piprop: 'thumbnail',
                                 pithumbsize: 300,
                   titles:     authorQuote
@@ -98,9 +98,10 @@ $(function(){
       var pages = data.query.pages,
           getID = Object.keys(pages),
           content = pages[getID].extract;
+      console.log(content);
 
-      if (content && content.length > 3) {
-        console.log(data);
+      if (content && content.length > 3 && !content.includes("This is a redirect")) {
+        console.log(content);
         $quotedByAuthor.text(authorQuote);
         $quotedByImage.html('<img src="' + pages[getID].thumbnail.source + '" alt="" />');
         var more_link = 'http://en.wikipedia.org/wiki/' + author_name_url;
@@ -109,6 +110,7 @@ $(function(){
       }else{
         $wikiResult.html("");
         $quotedByImage.html('');
+        $quotedByAuthor.text('');
       }
 
     }
